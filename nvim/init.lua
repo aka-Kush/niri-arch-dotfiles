@@ -165,7 +165,7 @@ require("oil").setup({
 })
 vim.keymap.set("n", "<leader>e", ":Oil<CR>")
 
---- snacks picker
+--- snacks picker (+ zen, image support)
 vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
 })
@@ -178,6 +178,29 @@ require("snacks").setup({
 	},
 	terminal = {},
 	lazygit = {},
+    zen = {
+    toggles = {
+      dim = true,
+      git_signs = false,
+      mini_diff_signs = false,
+      diagnostics = false,
+      inlay_hints = false,
+    },
+    show = {
+      statusline = false,
+      tabline = false,
+    },
+  },
+  image = {
+    enabled = true,
+    doc = {
+      enabled = true,
+      inline = true,
+      float = true,
+      max_width = 80,
+      max_height = 40,
+    },
+  },
 })
 
 vim.keymap.set("n", "<leader>fF", function()
@@ -204,6 +227,9 @@ end, { desc = "Help" })
 vim.keymap.set("n", "<leader>fk", function()
 	Snacks.picker.keymaps()
 end, { desc = "Keymaps" })
+
+vim.keymap.set("n", "<leader>z", function() Snacks.zen() end, { desc = "Zen mode" })
+vim.keymap.set("n", "<leader>is", function() Snacks.image.hover() end, { desc = "Image hover" })
 
 --- Tree sitter
 vim.pack.add({
