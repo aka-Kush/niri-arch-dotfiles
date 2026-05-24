@@ -161,6 +161,8 @@ require("oil").setup({
 		["<C-s>"] = { "actions.select", opts = { vertical = true } },
 		["<C-v>"] = { "actions.select", opts = { horizontal = true } },
 		["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
+        ["L"] = "actions.select",
+        ["H"] = "actions.parent",
 	},
 })
 vim.keymap.set("n", "<leader>e", ":Oil<CR>")
@@ -339,6 +341,12 @@ vim.keymap.set("n", "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", { desc = "De
 vim.pack.add({ "https://github.com/nvim-mini/mini.cmdline" })
 require("mini.cmdline").setup({
 	autocorrect = { enable = false },
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks_picker_input",
+  callback = function()
+    vim.b.minicompletion_disable = true
+  end,
 })
 
 --- Mini surround
