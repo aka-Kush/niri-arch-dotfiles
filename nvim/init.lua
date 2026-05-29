@@ -1,4 +1,4 @@
-------------------------- OPTIONS ------------------------- 
+------------------------- OPTIONS -------------------------
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -8,8 +8,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.hidden = true
-vim.o.autochdir = true
-vim.o.winborder = "rounded"
+vim.opt.winborder = "rounded"
+
+vim.opt.cursorline = false
+vim.opt.confirm = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -24,7 +26,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 vim.opt.laststatus = 3
 vim.opt.colorcolumn = "0"
-vim.opt.guicursor = ""
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -80,16 +81,16 @@ vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc =
 
 --- native undotree
 vim.keymap.set("n", "<leader>u", function()
-    vim.cmd.packadd("nvim.undotree")
-    require("undotree").open()
+	vim.cmd.packadd("nvim.undotree")
+	require("undotree").open()
 end, { desc = "Toggle Builtin Undotree" })
 
 --- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    callback = function()
-        vim.hl.on_yank()
-    end,
+	desc = "Highlight when yanking (copying) text",
+	callback = function()
+		vim.hl.on_yank()
+	end,
 })
 
 --- pack clean
@@ -122,28 +123,28 @@ vim.keymap.set("n", "<leader>pc", pack_clean)
 --- pack update
 vim.api.nvim_create_user_command("PackUpdate", function(opts)
 	-- checks if any argument is passed
-    if opts.args:match("%S") then
-        -- update specific plugins
-        local plugins = vim.split(opts.args, "%s+", { trimempty = true })
+	if opts.args:match("%S") then
+		-- update specific plugins
+		local plugins = vim.split(opts.args, "%s+", { trimempty = true })
 		-- update only specified plugins
-        vim.pack.update(plugins)
-    else
-        -- update all
-        vim.pack.update()
-    end
+		vim.pack.update(plugins)
+	else
+		-- update all
+		vim.pack.update()
+	end
 end, { nargs = "*", desc = "Update all plugins or specific ones" })
 
-------------------------- PLUGINS ------------------------- 
+------------------------- PLUGINS -------------------------
 
 --- Base16 Colorscheme
 vim.pack.add({
 	"https://github.com/RRethy/base16-nvim",
 })
-vim.cmd.colorscheme("base16-catppuccin-mocha")
+vim.cmd.colorscheme("base16-kanagawa-dragon")
 
 --- plenary
 vim.pack.add({
-  "https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
 })
 
 --- icons
@@ -158,11 +159,11 @@ vim.pack.add({
 
 require("oil").setup({
 	keymaps = {
-		["<C-s>"] = { "actions.select", opts = { vertical = true } },
-		["<C-v>"] = { "actions.select", opts = { horizontal = true } },
+		["<C-v>"] = { "actions.select", opts = { vertical = true } },
+		["<C-s>"] = { "actions.select", opts = { horizontal = true } },
 		["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
-        ["L"] = "actions.select",
-        ["H"] = "actions.parent",
+		["L"] = "actions.select",
+		["H"] = "actions.parent",
 	},
 })
 vim.keymap.set("n", "<leader>e", ":Oil<CR>")
@@ -180,44 +181,68 @@ require("snacks").setup({
 	},
 	terminal = {},
 	lazygit = {},
-    zen = {
-    toggles = {
-      dim = true,
-      git_signs = false,
-      mini_diff_signs = false,
-      diagnostics = false,
-      inlay_hints = false,
-    },
-    show = {
-      statusline = false,
-      tabline = false,
-    },
-  },
-  image = {
-    enabled = true,
-    doc = {
-      enabled = true,
-      inline = true,
-      float = true,
-      max_width = 80,
-      max_height = 40,
-    },
-  },
+	zen = {
+		toggles = {
+			dim = true,
+			git_signs = false,
+			mini_diff_signs = false,
+			diagnostics = false,
+			inlay_hints = false,
+		},
+		show = {
+			statusline = false,
+			tabline = false,
+		},
+	},
+	image = {
+		enabled = true,
+		doc = {
+			enabled = true,
+			inline = true,
+			float = true,
+			max_width = 80,
+			max_height = 40,
+		},
+	},
 })
 
-vim.keymap.set("n", "<leader>fF", function() Snacks.picker.files({ cwd = "~", hidden = true }) end, { desc = "Find files root" })
-vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fr", function() Snacks.picker.recent({ hidden = true }) end, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fc", function() Snacks.picker.colorschemes({ hidden = true }) end, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end, { desc = "Grep" })
-vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-vim.keymap.set("n", "<leader>xx", function() Snacks.picker.diagnostics_buffer() end, { desc = "Diagnostics buffer" })
-vim.keymap.set("n", "<leader>xX", function() Snacks.picker.diagnostics() end, { desc = "Diagnostics all" })
-vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Help" })
-vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Keymaps" })
+vim.keymap.set("n", "<leader>fF", function()
+	Snacks.picker.files({ cwd = "~", hidden = true })
+end, { desc = "Find files root" })
+vim.keymap.set("n", "<leader>ff", function()
+	Snacks.picker.files({ hidden = true })
+end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fr", function()
+	Snacks.picker.recent({ hidden = true })
+end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fc", function()
+	Snacks.picker.colorschemes({ hidden = true })
+end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", function()
+	Snacks.picker.grep({ hidden = true })
+end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>fb", function()
+	Snacks.picker.buffers()
+end, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>xx", function()
+	Snacks.picker.diagnostics_buffer()
+end, { desc = "Diagnostics buffer" })
+vim.keymap.set("n", "<leader>xX", function()
+	Snacks.picker.diagnostics()
+end, { desc = "Diagnostics all" })
+vim.keymap.set("n", "<leader>fh", function()
+	Snacks.picker.help()
+end, { desc = "Help" })
+vim.keymap.set("n", "<leader>fk", function()
+	Snacks.picker.keymaps()
+end, { desc = "Keymaps" })
 
-vim.keymap.set("n", "<leader>z", function() Snacks.zen() end, { desc = "Zen mode" })
-vim.keymap.set("n", "<leader>is", function() Snacks.image.hover() end, { desc = "Image hover" })
+vim.keymap.set("n", "<leader>z", function()
+	Snacks.zen()
+end, { desc = "Zen mode" })
+vim.keymap.set("n", "<leader>is", function()
+	Snacks.image.hover()
+end, { desc = "Image hover" })
 
 --- Tree sitter
 vim.pack.add({
@@ -226,7 +251,7 @@ vim.pack.add({
 		version = "main",
 	},
 })
-ensure_installed = {
+local ensure_installed = {
 	-- neovim/lua
 	"lua",
 	"vim",
@@ -329,10 +354,10 @@ require("mini.cmdline").setup({
 	autocorrect = { enable = false },
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "snacks_picker_input",
-  callback = function()
-    vim.b.minicompletion_disable = true
-  end,
+	pattern = "snacks_picker_input",
+	callback = function()
+		vim.b.minicompletion_disable = true
+	end,
 })
 
 --- Mini surround
@@ -408,16 +433,21 @@ vim.keymap.set("n", "gr", function()
 	Snacks.picker.lsp_references()
 end, { desc = "References" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "<leader>cf", function()
-	vim.lsp.buf.format({ async = true })
+	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
@@ -435,6 +465,42 @@ vim.lsp.config("lua_ls", {
 vim.lsp.enable({
 	"lua_ls",
 })
+
+--- conform
+vim.pack.add({
+	"https://github.com/stevearc/conform.nvim",
+})
+
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+	},
+	format_on_save = {
+		timeout_ms = 1000,
+		lsp_format = "fallback",
+	},
+})
+
+--- nvim-lint
+vim.pack.add({
+	"https://github.com/mfussenegger/nvim-lint",
+})
+
+local lint = require("lint")
+
+lint.linters_by_ft = {
+	lua = { "luacheck" },
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
+	callback = function()
+		require("lint").try_lint()
+	end,
+})
+
+vim.keymap.set("n", "<leader>cl", function()
+	require("lint").try_lint()
+end, { desc = "Lint" })
 
 --- mini diff and snacks lazygit
 vim.pack.add({
@@ -473,55 +539,76 @@ vim.pack.add({
 	"https://github.com/folke/flash.nvim",
 })
 
-require("flash").setup({
-	vim.keymap.set({ "n", "x", "o" }, "<c-s>", function()
-		require("flash").jump()
-	end, { desc = "Flash" }),
-})
+require("flash").setup()
+vim.keymap.set({ "n", "x", "o" }, "<c-s>", function()
+	require("flash").jump()
+end, { desc = "Flash" })
 
 --- harpoon
 vim.pack.add({
-  {
-    src = "https://github.com/ThePrimeagen/harpoon",
-    version = "harpoon2",
-  },
+	{
+		src = "https://github.com/ThePrimeagen/harpoon",
+		version = "harpoon2",
+	},
 })
 local harpoon = require("harpoon")
 harpoon:setup()
 local function harpoon_picker()
-  local list = harpoon:list()
-  local items = {}
-  for i, item in ipairs(list.items) do
-    table.insert(items, {
-      idx = i,
-      text = item.value,
-      file = item.value,
-    })
-  end
-  Snacks.picker.pick({
-    title = "Harpoon",
-    items = items,
-    format = "file",
-    confirm = function(picker, item)
-      picker:close()
-      if item then
-        list:select(item.idx)
-      end
-    end,
-  })
+	local list = harpoon:list()
+	local items = {}
+	for i, item in ipairs(list.items) do
+		table.insert(items, {
+			idx = i,
+			text = item.value,
+			file = item.value,
+		})
+	end
+	Snacks.picker.pick({
+		title = "Harpoon",
+		items = items,
+		format = "file",
+		confirm = function(picker, item)
+			picker:close()
+			if item then
+				list:select(item.idx)
+			end
+		end,
+	})
 end
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon add file" })
+vim.keymap.set("n", "<leader>a", function()
+	harpoon:list():add()
+end, { desc = "Harpoon add file" })
 vim.keymap.set("n", "<leader>h", harpoon_picker, { desc = "Harpoon menu" })
-vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Harpoon file 1" })
-vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Harpoon file 2" })
-vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Harpoon file 3" })
-vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Harpoon file 4" })
-vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end, { desc = "Harpoon file 5" })
-vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end, { desc = "Harpoon file 6" })
-vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end, { desc = "Harpoon file 7" })
-vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end, { desc = "Harpoon file 8" })
-vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end, { desc = "Harpoon previous" })
-vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end, { desc = "Harpoon next" })
+vim.keymap.set("n", "<leader>1", function()
+	harpoon:list():select(1)
+end, { desc = "Harpoon file 1" })
+vim.keymap.set("n", "<leader>2", function()
+	harpoon:list():select(2)
+end, { desc = "Harpoon file 2" })
+vim.keymap.set("n", "<leader>3", function()
+	harpoon:list():select(3)
+end, { desc = "Harpoon file 3" })
+vim.keymap.set("n", "<leader>4", function()
+	harpoon:list():select(4)
+end, { desc = "Harpoon file 4" })
+vim.keymap.set("n", "<leader>5", function()
+	harpoon:list():select(5)
+end, { desc = "Harpoon file 5" })
+vim.keymap.set("n", "<leader>6", function()
+	harpoon:list():select(6)
+end, { desc = "Harpoon file 6" })
+vim.keymap.set("n", "<leader>7", function()
+	harpoon:list():select(7)
+end, { desc = "Harpoon file 7" })
+vim.keymap.set("n", "<leader>8", function()
+	harpoon:list():select(8)
+end, { desc = "Harpoon file 8" })
+vim.keymap.set("n", "<leader>hp", function()
+	harpoon:list():prev()
+end, { desc = "Harpoon previous" })
+vim.keymap.set("n", "<leader>hn", function()
+	harpoon:list():next()
+end, { desc = "Harpoon next" })
 
 --- indent scope
 vim.pack.add({
@@ -544,9 +631,9 @@ require("render-markdown").setup({})
 --- smear cursor
 vim.pack.add({ "https://github.com/sphamba/smear-cursor.nvim" })
 require("smear_cursor").setup({
-  stiffness = 0.5,
-  trailing_stiffness = 0.5,
-  matrix_pixel_threshold = 0.5,
+	stiffness = 0.5,
+	trailing_stiffness = 0.5,
+	matrix_pixel_threshold = 0.5,
 })
 
 --- vim sudo

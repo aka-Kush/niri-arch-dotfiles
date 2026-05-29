@@ -1,30 +1,12 @@
 {
   "todos": [
     {
-      "id": 1778590542855,
-      "text": "Github Action Cert Exam - 22 May Friday 1PM",
-      "completed": false,
-      "createdAt": "2026-05-12T12:55:42.855Z",
-      "pageId": 0,
-      "priority": "high",
-      "details": ""
-    },
-    {
       "id": 1777768870183,
       "text": "Devops YT playlist",
       "completed": false,
       "createdAt": "2026-05-03T00:41:10.183Z",
       "pageId": 0,
       "priority": "low",
-      "details": ""
-    },
-    {
-      "id": 1777768801552,
-      "text": "GFG refund check",
-      "completed": true,
-      "createdAt": "2026-05-03T00:40:01.552Z",
-      "pageId": 0,
-      "priority": "medium",
       "details": ""
     }
   ],
@@ -35,8 +17,8 @@
     }
   ],
   "current_page_id": 0,
-  "count": 3,
-  "completedCount": 1,
+  "count": 1,
+  "completedCount": 0,
   "showCompleted": true,
   "showBackground": true,
   "isExpanded": false,
