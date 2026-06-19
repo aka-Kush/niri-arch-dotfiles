@@ -15,6 +15,7 @@ debug {
     honor-xdg-activation-with-invalid-serial
 }
 
+
 input {
     keyboard {
         xkb {
@@ -94,7 +95,7 @@ binds {
     Alt+Shift+w { spawn "brave-origin-nightly"; }
     Alt+Shift+i { spawn-sh "brave-origin-nightly --incognito"; }
     Alt+Shift+d { spawn "vesktop"; }
-    Alt+Shift+s { spawn-sh "flatpak run com.spotify.Client"; }
+    Alt+Shift+s { spawn-sh "spicetify watch -s"; }
     Alt+Shift+f { spawn "nautilus"; }
     Alt+Shift+p { spawn-sh "pavucontrol"; }
     Alt+Shift+n { spawn-sh "kitty nvim"; }
