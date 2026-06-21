@@ -135,7 +135,7 @@ binds {
     Alt+Shift+i { spawn-sh "brave-origin-nightly --incognito"; }
     Alt+Shift+d { spawn "vesktop"; }
     Alt+Shift+s { spawn-sh "flatpak run com.spotify.Client"; }
-    Alt+Shift+f { spawn "nautilus"; }
+    Alt+Shift+f { spawn "thunar"; }
     Alt+Shift+p { spawn-sh "pavucontrol"; }
     Alt+Shift+n { spawn-sh "kitty nvim"; }
     
