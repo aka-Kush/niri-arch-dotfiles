@@ -27,7 +27,7 @@ order = [ "default" ]
     center = [ "clock" ]
     contact_shadow = false
     enabled = true
-    end = [ "tray", "notifications", "bluetooth", "wallhaven", "network", "volume", "brightness", "battery" ]
+    end = [ "tray", "notifications", "bluetooth", "fan", "nightlight", "network", "volume", "brightness", "battery" ]
     font_family = "JetBrainsMono NF"
     font_weight = 700
     layer = "top"
@@ -46,7 +46,7 @@ order = [ "default" ]
     scale = 1.0
     shadow = false
     show_on_workspace_switch = true
-    start = [ "workspaces", "media" ]
+    start = [ "workspaces", "media", "cpu", "ram" ]
     thickness = 34
     widget_spacing = 12
 
@@ -152,7 +152,7 @@ session_unlocked = []
 shutting_down = []
 started = []
 theme_mode_changed = []
-wallpaper_changed = []
+wallpaper_changed = [ "nautilus -q" ]
 wifi_disabled = []
 wifi_enabled = []
 
@@ -484,7 +484,7 @@ wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt" ]
-    community_ids = [ "spicetify", "neovim", "obsidian", "discord", "papirus-icons" ]
+    community_ids = [ "spicetify", "neovim", "obsidian", "zed", "discord", "papirus-icons", "yazi" ]
     enable_builtin_templates = true
     enable_community_templates = true
 
@@ -520,6 +520,10 @@ min_length = 80.0
 title_scroll = "none"
 type = "active_window"
 
+[widget.bluetooth]
+hide_when_no_connected_device = true
+type = "bluetooth"
+
 [widget.clock]
 format = "{:%I:%M:%S}"
 type = "clock"
@@ -531,6 +535,12 @@ type = "sysmon"
 [widget.date]
 format = "{:%a %d %b}"
 type = "clock"
+
+[widget.fan]
+command = "/home/kush/.config/niri/fanControl.sh"
+glyph = "car-fan"
+tooltip = "Fan Control"
+type = "custom_button"
 
 [widget.input_volume]
 device = "input"
@@ -579,6 +589,10 @@ type = "spacer"
 [widget.temp]
 stat = "cpu_temp"
 type = "sysmon"
+
+[widget.tray]
+hidden = [ "Spotify" ]
+type = "tray"
 
 [widget.wallhaven]
 type = "noctalia/wallhaven:wallhaven"
