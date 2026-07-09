@@ -15,7 +15,7 @@ order = [ "default" ]
 
     [bar.default]
     auto_hide = false
-    background_opacity = 0.89999997615814209
+    background_opacity = 0.84999996423721313
     border = "outline"
     border_width = 0.0
     capsule = false
@@ -46,7 +46,7 @@ order = [ "default" ]
     scale = 1.0
     shadow = false
     show_on_workspace_switch = true
-    start = [ "workspaces", "media", "cpu", "ram" ]
+    start = [ "workspaces", "cpu", "ram", "media" ]
     thickness = 34
     widget_spacing = 12
 
@@ -210,12 +210,33 @@ wallpaper = ""
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@eDP-1" ]
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    enabled = true
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
@@ -487,6 +508,16 @@ wallpaper_scheme = "m3-tonal-spot"
     community_ids = [ "spicetify", "neovim", "obsidian", "zed", "discord", "papirus-icons", "yazi" ]
     enable_builtin_templates = true
     enable_community_templates = true
+
+        [theme.templates.user.Obsidian]
+        compare_to = ""
+        enabled = true
+        index = 0
+        input_path = "/home/kush/.config/noctalia/templates/obsidian.css"
+        output_path = [ "/home/kush/Documents/obsidian-vault/.obsidian/themes/obsidian.css" ]
+        output_path_dynamic = ""
+        post_hook = ""
+        pre_hook = ""
 
 [wallpaper]
 directory = "/home/kush/Pictures/walls"

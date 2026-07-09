@@ -32,7 +32,7 @@ input {
     trackpoint {
     }
 
-    // focus-follows-mouse 
+    // focus-follows-mouse
 }
 
 layout {
@@ -55,7 +55,7 @@ layout {
         proportion 0.8
     }
 
-    default-column-width {proportion 0.8;}
+    default-column-width {proportion 0.7;}
 
     focus-ring{
         off
@@ -96,7 +96,7 @@ animations {
 }
 
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
@@ -115,12 +115,12 @@ window-rule {
 
  window-rule {
      match is-active=false
-     opacity 0.90
+     opacity 0.85
  }
 
  window-rule {
      match is-active=true
-     opacity 0.95
+     opacity 0.90
  }
 
 binds {
@@ -135,10 +135,10 @@ binds {
     Alt+Shift+i { spawn-sh "brave-origin-nightly --incognito"; }
     Alt+Shift+d { spawn "vesktop"; }
     Alt+Shift+s { spawn-sh "flatpak run com.spotify.Client"; }
-    Alt+Shift+f { spawn "thunar"; }
+    Alt+Shift+f { spawn "nautilus"; }
     Alt+Shift+p { spawn-sh "pavucontrol"; }
     Alt+Shift+n { spawn-sh "kitty nvim"; }
-    
+
     Alt+1 { spawn-sh "~/.config/niri/external.sh"; }
     Alt+2 { spawn-sh "~/.config/niri/dual.sh"; }
     Alt+3 { spawn-sh "~/.config/niri/laptop.sh"; }
@@ -147,7 +147,8 @@ binds {
     Alt+Ctrl+x { spawn-sh "noctalia msg panel-toggle session"; }
     Alt+Ctrl+e { spawn-sh "noctalia msg panel-toggle "; }
     Alt+Ctrl+v { spawn-sh "noctalia msg panel-toggle clipboard"; }
-    Alt+Ctrl+f { spawn-sh "bash ~/.config/niri/fanControl.sh"; } 
+    Alt+Ctrl+f { spawn-sh "bash ~/.config/niri/fanControl.sh"; }
+    Alt+Ctrl+w { spawn-sh "noctalia msg bar-toggle"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up 5%"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down 5%"; }
