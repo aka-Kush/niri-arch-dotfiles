@@ -1,0 +1,15 @@
+[global]
+    frame_color = "#7c6f64"
+
+[urgency_low]
+    background = "#282828"
+    foreground = "#7c6f64"
+
+[urgency_normal]
+    background = "#282828"
+    foreground = "#ebdbb2"
+
+[urgency_critical]
+    background = "#282828"
+    foreground = "#cc241d"
+    frame_color = "#cc241d"

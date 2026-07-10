@@ -1,0 +1,39 @@
+# Gruvbox dark theme for swaylock-effects
+
+daemonize
+show-failed-attempts
+clock
+screenshot
+effect-blur=13x13
+effect-vignette=0.5:0.5
+color=#282828
+font=Iosevka Nerd Font
+indicator
+indicator-radius=200
+indicator-thickness=20
+line-color=#3c3836
+ring-color=#a89984
+inside-color=#282828
+key-hl-color=#b8bb26
+separator-color=#00000000
+text-color=#ebdbb2
+line-ver-color=#b8bb26
+ring-ver-color=#b8bb26
+inside-ver-color=#282828
+text-ver-color=#b8bb26
+ring-wrong-color=#fb4934
+text-wrong-color=#fb4934
+inside-wrong-color=#282828
+inside-clear-color=#282828
+text-clear-color=#ebdbb2
+ring-clear-color=#83a598
+line-clear-color=#83a598
+line-wrong-color=#282828
+bs-hl-color=#fb4934
+grace=0
+grace-no-mouse
+grace-no-touch
+datestr=%a, %B %e
+timestr=%I:%M %p
+fade-in=0.4
+ignore-empty-password
