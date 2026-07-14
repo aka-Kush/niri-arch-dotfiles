@@ -1,5 +1,6 @@
 #!/bin/sh
-exec wmenu-run \
+exec j4-dmenu-desktop --dmenu="wmenu \
+    -i \
     -N '#282828' \
     -n '#ebdbb2' \
     -p 'Launch:' \
@@ -8,4 +9,4 @@ exec wmenu-run \
     -S '#3c3836' \
     -s '#ebdbb2' \
     -l 10 \
-    -f 'Iosevka Nerd Font 14'
+    -f 'Iosevka Nerd Font 14'"

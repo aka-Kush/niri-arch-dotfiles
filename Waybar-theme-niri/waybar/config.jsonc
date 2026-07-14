@@ -13,14 +13,13 @@
         "tray",
         "custom/sep",
         "cpu",
-        "custom/sep",
         "memory",
-        "custom/sep",
-        "pulseaudio",
         "custom/sep",
         "network",
         "custom/sep",
         "backlight",
+        "custom/sep",
+        "pulseaudio",
         "custom/sep",
         "battery",
         "custom/sep",
@@ -33,21 +32,30 @@
     "clock": {
         "format": "{:%I:%M:%S}",
         "interval": 1,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "format": {
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
         "format": "cpu {usage}%",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "missioncenter"
     },
     "memory": {
-        "format": "mem {}%"
+        "format": "mem {}%",
+        "on-click": "missioncenter"
     },
     "backlight": {
+        "tooltip-format": "Click to toggle night mode",
         "device": "amdgpu_bl1",
         "on-scroll-up": "brightnessctl set 5%+",
         "on-scroll-down": "brightnessctl set 5%-",
-        "format": "brt {percent}%"
+        "format": "brt {percent}%",
+        "on-click": "~/.config/niri/nightmode.sh"
     },
     "battery": {
         "states": {
@@ -70,11 +78,12 @@
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "kitty nmtui"
     },
     "pulseaudio": {
-        "on-scroll-up": "wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%-",
-        "on-scroll-down": "wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-up": "wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%-",
         "max-volume": 150,
         "format": "vol {volume}%",
         "format-bluetooth": "vol {volume}%",
@@ -86,7 +95,7 @@
     },
     "mpris": {
         "format": "{status_icon} {dynamic}",
-        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "format-paused": "{status_icon} {dynamic}",
         "status-icons": {
             "playing": "▶",
             "paused": ""
