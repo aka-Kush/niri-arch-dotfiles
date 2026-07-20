@@ -1,0 +1,27 @@
+layout {
+	background-color "{bg}"
+
+    border {
+        active-color   "{accent}"
+        inactive-color "{dim}"
+        urgent-color   "{red}"
+    }
+
+    tab-indicator {
+        active-color   "{accent}"
+        inactive-color "{dim}"
+        urgent-color   "{red}"
+    }
+
+}
+
+overview {
+	backdrop-color "{bg}"
+}
+
+recent-windows {
+    highlight {
+        active-color "{accent}"
+        urgent-color "{red}"
+    }
+}
