@@ -1,6 +1,5 @@
 #!/bin/sh
 exec cat ~/.config/wmenu/emojis.txt | wmenu \
-    -i \
     -N '#282828' \
     -i \
     -n '#ebdbb2' \

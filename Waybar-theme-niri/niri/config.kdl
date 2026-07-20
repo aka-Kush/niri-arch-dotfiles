@@ -1,5 +1,3 @@
-include "monitor.kdl"
-
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORM "wayland"
@@ -46,7 +44,7 @@ output "eDP-1" {
 }
 
 layout {
-    gaps 12
+    gaps 8
 
     center-focused-column "never"
     always-center-single-column
@@ -172,8 +170,6 @@ binds {
     Alt+Shift+f { spawn "thunar"; }
     Alt+Shift+p { spawn-sh "pavucontrol"; }
     Alt+Shift+n { spawn-sh "kitty nvim"; }
-
-    Ctrl+Shift+Equal { spawn-sh "/home/kush/Documents/woomer/target/debug/woomer"; }
 
     Alt+1 { spawn-sh "~/.config/niri/external.sh"; }
     Alt+2 { spawn-sh "~/.config/niri/dual.sh"; }

@@ -1,7 +1,6 @@
 #!/bin/sh
 
-choice=$(printf 'Lock\nLogout\nSuspend\nReboot\nPoweroff' | wmenu \
-    -i \
+choice=$(printf 'lock\nlogout\nsuspend\nreboot\npoweroff' | wmenu \
     -N '#282828' \
     -n '#ebdbb2' \
     -p 'Session:' \
@@ -13,9 +12,9 @@ choice=$(printf 'Lock\nLogout\nSuspend\nReboot\nPoweroff' | wmenu \
     -f 'Iosevka Nerd Font 14')
 
 case "$choice" in
-    Lock) swaylock ;;
-    Logout) niri msg action quit ;;
-    Suspend) systemctl suspend && swaylock ;;
-    Reboot) systemctl reboot ;;
-    Poweroff) systemctl poweroff ;;
+    lock) swaylock ;;
+    logout) niri msg action quit ;;
+    suspend) systemctl suspend && swaylock ;;
+    reboot) systemctl reboot ;;
+    poweroff) systemctl poweroff ;;
 esac
