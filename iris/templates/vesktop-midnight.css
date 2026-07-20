@@ -1,0 +1,77 @@
+/**
+ * @name Iris Midnight
+ * @description Midnight Discord themed by Iris.
+ * @source https://github.com/refact0r/midnight-discord
+ */
+
+/* Discord must be set to dark mode for Midnight to apply correctly. */
+
+@import url("https://refact0r.github.io/midnight-discord/build/midnight.css");
+
+:root {
+    --font: "figtree";
+    --corner-text: "Iris";
+
+    --online-indicator: {green};
+    --dnd-indicator: {red};
+    --idle-indicator: {yellow};
+    --streaming-indicator: {accent};
+
+    --accent-1: {accent};
+    --accent-2: {accent};
+    --accent-3: {accent};
+    --accent-4: {surface};
+    --accent-5: {dim};
+    --accent-new: {green};
+    --mention: {surface};
+    --mention-hover: {dim};
+
+    --text-0: {bg};
+    --text-1: {fg};
+    --text-2: {fg};
+    --text-3: {fg};
+    --text-4: {dim};
+    --text-5: {dim};
+
+    --bg-1: {dim};
+    --bg-2: {surface};
+    --bg-3: {surface};
+    --bg-4: {bg};
+    --hover: {surface};
+    --active: {surface};
+    --message-hover: {surface};
+
+    --spacing: 12px;
+
+    --list-item-transition: 0.2s ease;
+    --unread-bar-transition: 0.2s ease;
+    --moon-spin-transition: 0.4s ease;
+    --icon-spin-transition: 1s ease;
+
+    --roundness-xl: 22px;
+    --roundness-l: 20px;
+    --roundness-m: 16px;
+    --roundness-s: 12px;
+    --roundness-xs: 10px;
+    --roundness-xxs: 8px;
+
+    --discord-icon: none;
+    --moon-icon: block;
+    --moon-icon-url: url("https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg");
+    --moon-icon-size: auto;
+
+    --login-bg-filter: saturate(0.3) hue-rotate(-15deg) brightness(0.4);
+    --green-to-accent-3-filter: none;
+    --blurple-to-accent-3-filter: none;
+}
+
+.selected_f5eb4b,
+.selected_f6f816 .link_d8bfb3 {
+    color: var(--text-0) !important;
+    background: var(--accent-3) !important;
+}
+
+.selected_f6f816 .link_d8bfb3 * {
+    color: var(--text-0) !important;
+    fill: var(--text-0) !important;
+}
